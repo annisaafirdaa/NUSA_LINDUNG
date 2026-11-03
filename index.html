@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NUSA LINDUNG — Kedaulatan Digital Indonesia</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#081426;--bg2:#0D1B2A;--sf:#14243A;--bl:#3B82F6;--cy:#22D3EE;--vi:#8B5CF6;--tx:#F1F5F9;--mu:#94A3B8;--bd:rgba(148,163,184,.18);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Plus Jakarta Sans',Inter,sans-serif;font-weight:800;line-height:1.15;margin:0 0 .6em}
+h1{font-size:clamp(2rem,5vw,3.4rem)}h2{font-size:clamp(1.6rem,3.2vw,2.4rem)}h3{font-size:1.15rem}
+a{color:inherit;text-decoration:none}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+.g{background:linear-gradient(90deg,var(--cy),var(--bl),var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;transition:.3s;background:transparent}
+nav.s{background:rgba(8,20,38,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+nav .w{display:flex;align-items:center;gap:18px;height:64px}
+.logo{font:800 1.1rem 'Plus Jakarta Sans';letter-spacing:.04em}
+.links{display:flex;gap:16px;margin-left:auto;align-items:center;font-size:.92rem}
+.links a{color:var(--mu)}.links a:hover,.links a.on{color:var(--tx)}
+#bg{display:none;margin-left:auto;background:none;border:1px solid var(--bd);color:var(--tx);border-radius:10px;padding:6px 10px}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 .95rem Inter;padding:11px 20px;border-radius:12px;background:linear-gradient(135deg,var(--bl),var(--vi));color:#fff;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,130,246,.35)}
+.btn.o{background:transparent;border:1px solid var(--bd)}.btn.sm{padding:7px 14px;font-size:.85rem}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:22px;transition:.25s;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.45)}
+.ic{font-size:1.6rem;width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:rgba(59,130,246,.15);margin-bottom:12px}
+.mu{color:var(--mu)}.tag{display:inline-block;font-size:.75rem;padding:3px 10px;border-radius:99px;background:rgba(139,92,246,.18);color:#C4B5FD;margin:0 6px 6px 0}
+.tag.c{background:rgba(34,211,238,.14);color:var(--cy)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:30px}
+.hero svg{width:100%;height:auto}.pulse{animation:p 3s ease-in-out infinite}@keyframes p{50%{opacity:.35}}
+.steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));counter-reset:s}
+.step{position:relative;padding:18px;border-top:3px solid var(--bd);background:var(--bg2);border-radius:12px}
+.step:before{counter-increment:s;content:counter(s);font:800 1.4rem 'Plus Jakarta Sans';color:var(--cy)}
+.step i{position:absolute;top:-3px;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--cy),var(--vi));transition:width 1.2s}
+.in .step i{width:100%}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--bd);color:var(--tx);border-radius:10px;padding:10px 12px;font:inherit;margin:4px 0 2px}
+label{font-size:.85rem;color:var(--mu);display:block;margin-top:10px}
+.err{color:#FCA5A5;font-size:.8rem;min-height:1em}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.row>*{flex:1;min-width:160px}
+.chip{flex:0 0 auto!important;min-width:0!important;width:auto;cursor:pointer;border:1px solid var(--bd);background:none;color:var(--mu);padding:6px 14px;border-radius:99px;font:inherit;font-size:.85rem}
+.chip.on{background:var(--bl);color:#fff;border-color:var(--bl)}
+.note{border:1px dashed var(--cy);color:var(--cy);padding:8px 14px;border-radius:12px;font-size:.85rem;margin:12px 0;background:rgba(34,211,238,.06)}
+.bar{height:8px;border-radius:9px;background:var(--bg2);overflow:hidden}.bar b{display:block;height:100%;background:linear-gradient(90deg,var(--cy),var(--vi));transition:width .5s}
+.num{font:600 2.2rem Inter}
+.dash{display:grid;grid-template-columns:210px 1fr;gap:20px;align-items:start}
+.side{position:sticky;top:80px;display:flex;flex-direction:column;gap:6px}
+.side button{text-align:left;background:none;border:0;color:var(--mu);padding:10px 12px;border-radius:10px;cursor:pointer;font:inherit}
+.side button.on,.side button:hover{background:var(--sf);color:var(--tx)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{padding:9px;border-bottom:1px solid var(--bd);text-align:left}
+.sc{overflow-x:auto}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:grid;place-items:center;z-index:50;padding:20px}.modal .card{max-width:520px;max-height:85vh;overflow:auto}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--sf);border:1px solid var(--cy);padding:10px 18px;border-radius:12px;z-index:60;display:none;max-width:90vw}
+footer{border-top:1px solid var(--bd);padding:30px 0;color:var(--mu);font-size:.85rem}
+@media(max-width:860px){.hero,.dash{grid-template-columns:1fr}.side{position:static;flex-direction:row;overflow-x:auto}.links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);flex-direction:column;padding:16px 20px;align-items:flex-start;border-bottom:1px solid var(--bd)}.links.open{display:flex}#bg{display:block}}
+h1,h2,h3{letter-spacing:-.02em}h2{font-weight:700}h1{font-weight:800}
+section{padding:84px 0;border-top:1px solid var(--bd)}.hero+*{border-top:0}
+.g{background:none;-webkit-text-fill-color:currentColor;color:var(--cy)}
+.btn{background:var(--tx);color:var(--bg);border-radius:4px}.btn:hover{transform:none;box-shadow:none;background:var(--cy)}
+.btn.o{background:none;color:var(--tx);border:1px solid var(--mu)}.btn.o:hover{background:none;border-color:var(--cy);color:var(--cy)}
+.grid{gap:36px 32px}.grid{counter-reset:c}
+.card{background:none;border:0;border-top:1px solid var(--bd);border-radius:0;box-shadow:none;padding:18px 0 4px}.card:hover{transform:none;border-top-color:var(--cy)}
+.grid>.card:before{counter-increment:c;content:'0' counter(c);display:block;font:500 .75rem ui-monospace,Menlo,monospace;color:var(--cy);margin-bottom:12px}
+.dash .grid>.card:before{content:none}
+.dash .card,form.card,.modal .card{background:var(--sf);border:1px solid var(--bd);border-radius:6px;padding:20px}
+.ic{display:none}
+.tag{border-radius:2px;background:none;border:1px solid var(--bd);color:var(--mu);font:500 .68rem ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.06em}.tag.c{background:none;color:var(--cy);border-color:rgba(34,211,238,.4)}
+.note{border:0;border-left:3px solid var(--cy);border-radius:0;background:none;color:var(--mu)}
+input,select,textarea{border-radius:4px}.bar,.bar b{border-radius:0}.bar b{background:var(--cy)}
+.step{border-radius:0;background:none;border-top-color:var(--bd)}.step i{background:var(--cy)}
+.num{font-weight:500;letter-spacing:-.03em}
+:root{--bg:#F3EEE3;--bg2:#EAE3D4;--sf:#FBF8F1;--bl:#B5472B;--cy:#B5472B;--vi:#2F5D50;--tx:#1E1B16;--mu:#6B645A;--bd:rgba(30,27,22,.22);color-scheme:light}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.01em}h1{font-weight:600;font-size:clamp(2.2rem,5.4vw,3.8rem)}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:600}
+.g{font-style:italic}
+nav.s{background:rgba(243,238,227,.92)}
+.btn{border-radius:2px;color:var(--bg)}.btn:hover{background:var(--cy);color:#fff}
+.btn.o{color:var(--tx);border-color:var(--tx)}.btn.o:hover{color:var(--cy);border-color:var(--cy)}
+.tag.c{border-color:var(--cy)}
+.modal{background:rgba(30,27,22,.5)}
+.hero svg circle{fill:var(--bg)}.hero svg text{fill:var(--mu)}
+#toast{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.step:before{font-family:Fraunces,Georgia,serif}
+.cvw canvas{width:100%;display:block;border:1px solid var(--bd);background:var(--sf);cursor:crosshair;touch-action:pan-y}.cvw small{display:block;margin-top:8px;font:500 .72rem ui-monospace,Menlo,monospace}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s,border-color .25s}.rv.v{opacity:1;transform:none}
+.card{position:relative}.card:hover{background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(181,71,43,.1),transparent)}
+.mq{overflow:hidden;border-block:1px solid var(--bd);padding:14px 0;white-space:nowrap}.mq div{display:inline-block;animation:mq 34s linear infinite;font:600 1.4rem Fraunces,Georgia,serif}.mq span{margin:0 22px;color:var(--cy)}@keyframes mq{to{transform:translateX(-50%)}}
+#pb{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--cy)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav id="nv"><i id="pb"></i><div class="w"><a href="#beranda" class="logo">NUSA <span class="g">LINDUNG</span></a><button id="bg" aria-label="Menu">☰</button>
+<div class="links" id="lk"><a href="#beranda">Beranda</a><a href="#tentang">Tentang Kami</a><a href="#program">Program</a><a href="#industri">Proyek Industri</a><a href="#inovasi">Pusat Inovasi</a><a href="#talenta">Talent Hub</a><a href="#dampak">Dampak</a><a href="#masuk">Login</a><a class="btn sm" href="#masuk">Gabung Sekarang</a></div></div></nav>
+<main id="app"></main>
+<footer><div class="w">NUSA LINDUNG — prototipe konseptual untuk kompetisi esai inovasi. Seluruh data, mitra, dan metrik di situs ini adalah contoh demonstrasi (simulasi front-end, tidak tersimpan di server). Tidak ada klaim jaminan kerja atau sertifikasi profesional.</div></footer>
+<div id="toast"></div>
+<script>
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const S={user:null,tab:0,joined:[],port:[{t:"Prediksi Penjualan Batik (contoh)",p:"Perencanaan produksi UMKM",k:"Python, Prophet",c:"Pemodelan data",l:"#"}],notes:["Selamat datang di NUSA LINDUNG (notifikasi contoh)"],prof:{n:"Peserta Demo",u:"Universitas Contoh",s:"Data Science, Python"}};
+const CH=[
+{id:0,c:"UMKM Batik",t:"Prakiraan Penjualan Berbasis AI",d:"Memprediksi permintaan musiman untuk mendukung perencanaan produksi.",s:["Python","Time series","Visualisasi"],o:"Model prakiraan + dasbor ringkas",st:"Terbuka"},
+{id:1,c:"Retail & Fashion",t:"Prediksi Persediaan",d:"Mengoptimalkan stok agar tidak kekurangan maupun kelebihan barang.",s:["ML","SQL","Optimasi"],o:"Prototipe rekomendasi stok",st:"Terbuka"},
+{id:2,c:"Pertanian",t:"Pemantauan Kondisi Tanaman",d:"Memantau kondisi tanaman memakai dataset yang sesuai dan legal.",s:["Computer vision","Data geospasial"],o:"Prototipe klasifikasi kondisi lahan",st:"Dalam Peninjauan"},
+{id:3,c:"Layanan Publik",t:"Penilaian Kualitas Data",d:"Menilai kualitas data layanan dan menerapkan AI yang bertanggung jawab.",s:["Data governance","Python","Audit AI"],o:"Laporan kualitas data + rekomendasi",st:"Terbuka"},
+{id:4,c:"Pendidikan",t:"Analitik Pembelajaran Ramah Privasi",d:"Analitik belajar dengan perlindungan data pribadi siswa.",s:["Analitik","Privasi","Statistik"],o:"Dasbor analitik anonim",st:"Segera Dibuka"}];
+const PR=[
+{n:"01",t:"DATA GUARDIAN",i:"🗄️",d:"Inisiatif mahasiswa untuk tata kelola data yang bertanggung jawab.",a:["Dokumentasi dataset","Penilaian kualitas data","Perlindungan privasi data","Kontrol akses dan keamanan data","Pengelolaan data yang bertanggung jawab"],o:"Kompetensi tata kelola data, rekayasa data, dan perlindungan data."},
+{n:"02",t:"AI INDEPENDENCE LAB",i:"🧪",d:"Laboratorium kolaboratif untuk membangun dan menguji model AI berbasis teknologi open-source.",a:["Pengembangan model AI","Eksperimen AI open-source","Evaluasi performa model","Dataset berkonteks lokal","Prototipe aplikasi AI"],o:"Pengalaman praktis machine learning, AI engineering, dan pengembangan model."},
+{n:"03",t:"AI AUDIT ACADEMY",i:"🔍",d:"Program edukasi dan praktik untuk mengevaluasi sistem AI sebelum digunakan.",a:["Penilaian bias algoritmik","Evaluasi performa AI","Penilaian transparansi model","Uji keamanan di lingkungan yang diizinkan","Evaluasi etika AI"],o:"Kompetensi audit AI, responsible AI, dan penilaian risiko teknologi."},
+{n:"04",t:"INDUSTRY AI PROJECT",i:"🤝",d:"Proyek kolaboratif yang menghubungkan mahasiswa dengan tantangan nyata perusahaan dan UMKM.",a:["Identifikasi masalah industri","Pembentukan tim multidisiplin","Pengembangan solusi AI","Mentoring industri","Uji dan evaluasi prototipe","Presentasi proyek"],o:"Pengalaman proyek nyata, portofolio, kerja tim, dan wawasan industri."}];
+const PJ=[
+{t:"Klasifikasi Aduan Warga",c:"Machine Learning",st:"Prototipe",d:"Model teks bahasa Indonesia untuk memilah aduan layanan (contoh)."},
+{t:"Katalog Dataset Batik Terdokumentasi",c:"Data Governance",st:"Dokumentasi",d:"Kartu data dan panduan privasi untuk dataset motif lokal (contoh)."},
+{t:"Uji Bias Penilaian Kredit Mikro",c:"Responsible AI",st:"Evaluasi",d:"Audit keadilan model pada data sintetis (contoh)."},
+{t:"Forecasting Stok Toko Kain",c:"Data Science",st:"Prototipe",d:"Perbandingan metode prakiraan permintaan (contoh)."},
+{t:"Uji Ketahanan Chatbot Layanan",c:"AI Security",st:"Rencana",d:"Pengujian prompt injection pada lingkungan sandbox yang diizinkan (contoh)."},
+{t:"Panduan AI Bertanggung Jawab Kampus",c:"Responsible AI",st:"Dokumentasi",d:"Draf pedoman penggunaan AI untuk proyek mahasiswa (contoh)."}];
+const MT=[["Mentor Contoh A","Data Science · Retail"],["Mentor Contoh B","AI Audit · Layanan Publik"],["Mentor Contoh C","ML Engineering · Agritech"]];
+const IM=[["Mahasiswa Peserta",1240],["Mitra Perguruan Tinggi",18],["Mitra Industri",32],["Proyek Selesai",57],["Prototipe Teruji",41]];
+
+function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(toast.x);toast.x=setTimeout(()=>t.style.display='none',2800)}
+const note=t=>`<div class="note">${t}</div>`;
+const head=(t,s)=>`<h2>${t}</h2>${s?`<p class="mu" style="max-width:680px">${s}</p>`:''}`;
+const SVGH=`<svg viewBox="0 0 400 320" role="img" aria-label="Jaringan simpul yang menghubungkan kampus dan industri"><defs><linearGradient id="gr"><stop stop-color="#B5472B"/><stop offset="1" stop-color="#2F5D50"/></linearGradient></defs>
+<g stroke="url(#gr)" stroke-width="1.2" opacity=".6"><path d="M60 80L150 140L250 90L340 150M150 140L120 240L230 220L250 90M230 220L330 270M120 240L60 280M250 90L300 30"/></g>
+<g fill="#081426" stroke="url(#gr)" stroke-width="2">${[[60,80],[150,140],[250,90],[340,150],[120,240],[230,220],[330,270],[60,280],[300,30]].map((p,i)=>`<circle class="pulse" style="animation-delay:${i*.4}s" cx="${p[0]}" cy="${p[1]}" r="${i%3?7:11}"/>`).join('')}</g>
+<g font-family="Inter" font-size="11" fill="#94A3B8"><text x="70" y="70">Kampus</text><text x="260" y="85">Industri</text><text x="130" y="262">Mentor</text><text x="240" y="238">Solusi AI</text></g></svg>`;
+const PROB=[["🔗","Ketergantungan Digital","Indonesia perlu memperkuat kemampuan untuk mengembangkan, mengelola, dan mengevaluasi teknologi AI-nya sendiri."],["🔐","Keamanan dan Tata Kelola Data","Pengelolaan data yang bertanggung jawab, perlindungan privasi, dan sistem AI yang transparan adalah keharusan."],["🎓","Kesenjangan Talenta Industri","Mahasiswa membutuhkan lebih banyak kesempatan menerapkan ilmu pada masalah industri nyata."]];
+const MIS=[["⚙️","Membangun Kemampuan AI Mandiri","Mahasiswa melatih dan menguji model sendiri, sehingga bangsa tidak hanya menjadi pengguna."],["🛡️","Tata Kelola Data Bertanggung Jawab","Praktik privasi dan keamanan data menjaga kendali atas aset digital nasional."],["🚀","Talenta Digital Siap Masa Depan","Kompetensi teknis dan etis menjadi fondasi kedaulatan jangka panjang."]];
+const FLOW=["Industri mengajukan tantangan teknologi nyata","Mahasiswa mendaftar dan membentuk tim multidisiplin","Dosen dan mentor industri membimbing proyek","Mahasiswa mengembangkan dan menguji solusi AI","Solusi dievaluasi dari sisi teknis, keamanan, dan etika","Hasil didokumentasikan dan dipresentasikan ke mitra"];
+const cards=(a,f)=>`<div class="grid">${a.map(f).join('')}</div>`;
+const PB=()=>cards(PROB,p=>`<div class="card"><div class="ic">${p[0]}</div><h3>${p[1]}</h3><p class="mu">${p[2]}</p></div>`);
+const MB=()=>cards(MIS,p=>`<div class="card"><div class="ic">${p[0]}</div><h3>${p[1]}</h3><p class="mu">${p[2]}</p></div>`);
+const HW=()=>`<div class="steps" id="fl">${FLOW.map(f=>`<div class="step"><i></i><p>${f}</p></div>`).join('')}</div>`;
+
+const R={
+beranda:()=>`<div class="w"><div class="hero"><div><span class="tag c">Talenta Muda Berdaya, Teknologi Indonesia Berdaulat.</span><h1>Teknologi Boleh Berkembang Pesat. <span class="g">Kedaulatan Digital</span> Harus Tetap di Tangan Indonesia.</h1><p class="mu">NUSA LINDUNG hadir sebagai ruang kolaborasi generasi muda, perguruan tinggi, dan industri untuk membangun teknologi AI yang aman, mandiri, dan bermanfaat bagi bangsa.</p><p><a class="btn" href="#inovasi">Jelajahi Inovasi</a> <a class="btn o" href="#tentang">Kenali Misi Kami</a></p><p class="mu" style="font-size:.85rem">From Campus Innovation to National Digital Independence.</p></div><div class="cvw"><canvas id="cv" aria-label="Jaringan interaktif kampus, industri, dan mentor"></canvas><small class="mu">GERAKKAN KURSOR / KLIK UNTUK MENAMBAH SIMPUL</small></div></div></div>
+<div class="mq"><div>${["Data Guardian","AI Independence Lab","AI Audit Academy","Industry AI Project","Data Guardian","AI Independence Lab","AI Audit Academy","Industry AI Project"].map(t=>`${t}<span>/</span>`).join('')}</div></div><section><div class="w">${head("Dari Ruang Kelas Menuju Solusi Nyata.")}${HW()}</div></section>
+<section><div class="w"><h2 style="text-align:center">Indonesia tidak cukup hanya menjadi pengguna teknologi.</h2><p class="mu" style="text-align:center;max-width:760px;margin:auto">Generasi mudanya harus mampu mengembangkan, mengelola, mengaudit, dan menentukan arah teknologi yang digunakan bangsanya.</p></div></section>`,
+tentang:()=>`<section><div class="w">${head("Mengapa Indonesia Membutuhkan NUSA LINDUNG?","Tiga tantangan utama. Statistik resmi akan ditambahkan hanya bersama sumber dan tahun terbitnya.")}${PB()}</div></section><section><div class="w">${head("Bukan Sekadar Belajar Teknologi. Saatnya Menciptakan Solusi.")}${MB()}</div></section><section><div class="w">${HW()}</div></section>`,
+program:()=>`<section><div class="w">${head("Empat Pilar untuk Membangun Kedaulatan AI Indonesia.")}${cards(PR,(p,i)=>`<div class="card"><div class="ic">${p.i}</div><span class="tag">Program ${p.n}</span><h3>${p.t}</h3><p class="mu">${p.d}</p><button class="btn sm o" data-pr="${i}">Pelajari Program</button></div>`)}</div></section>`,
+industri:()=>`<section><div class="w">${head("Masalah Industri Hari Ini, Inovasi Generasi Muda Esok Hari.","Industry Challenge Marketplace.")}${note("Tantangan di bawah adalah contoh prototipe, bukan mitra yang telah terkonfirmasi.")}<div class="row"><input id="q" placeholder="Cari tantangan atau keterampilan…" aria-label="Cari"><select id="cf"><option value="">Semua kategori</option>${CH.map(c=>`<option>${c.c}</option>`).join('')}</select></div><div id="cl"></div>
+<h3 style="margin-top:40px">Submit Industry Challenge</h3><form class="card" id="fc" novalidate><label>Nama perusahaan / organisasi<input name="n"></label><div class="err"></div><label>Judul tantangan<input name="t"></label><div class="err"></div><label>Deskripsi masalah (min. 20 karakter)<textarea name="d" rows="3"></textarea></label><div class="err"></div><p><button class="btn">Kirim Tantangan</button></p></form></div></section>`,
+talenta:()=>`<section><div class="w">${head("Bangun Kompetensi. Ciptakan Portofolio. Siapkan Karier.","Program tidak menjamin pekerjaan maupun sertifikasi profesional.")}
+<h3>Jalur Belajar</h3><div>${["Data Science","Machine Learning","AI Engineering","Data Governance","Cybersecurity Fundamentals","Responsible AI"].map(x=>`<span class="tag c">${x}</span>`).join('')}</div>
+<h3 style="margin-top:28px">Kesiapan Karier</h3>${cards([["Keterampilan teknis",70],["Berpikir analitis",60],["Pemecahan masalah",65],["Komunikasi",50],["Kerja sama tim",75],["Manajemen proyek",45]],c=>`<div class="card"><b>${c[0]}</b><div class="bar" style="margin-top:8px"><b style="width:${c[1]}%"></b></div><small class="mu">Contoh target pengembangan</small></div>`)}
+<h3 style="margin-top:28px">Mentor Industri (data demonstrasi)</h3>${cards(MT,m=>`<div class="card"><div class="ic">👤</div><b>${m[0]}</b><p class="mu">${m[1]}</p><span class="tag">Data contoh</span></div>`)}
+<p style="margin-top:24px"><a class="btn" href="#masuk">Buat Portofolio di Dasbor</a></p></div></section>`,
+inovasi:()=>`<section><div class="w">${head("Ruang Eksperimen untuk Teknologi Indonesia.","Galeri proyek, dokumentasi, referensi open-source, dan pedoman AI yang bertanggung jawab.")}${note("Seluruh proyek adalah contoh ilustratif.")}<div class="row" id="fl2">${["Semua Proyek","Data Science","Machine Learning","AI Security","Data Governance","Responsible AI"].map((f,i)=>`<button class="chip ${i?'':'on'}" data-f="${i?f:''}">${f}</button>`).join('')}</div><div id="pl"></div></div></section>`,
+dampak:()=>`<section><div class="w">${head("Dampak Nyata untuk Talenta, Industri, dan Indonesia.")}${cards([["🎓","Mahasiswa","Kesiapan profesional, pengalaman proyek praktis, kompetensi AI dan data, portofolio."],["🏭","Industri","Akses tim mahasiswa inovatif, solusi alternatif, pemahaman AI bertanggung jawab, kolaborasi kampus-industri."],["🇮🇩","Nasional","Kapabilitas AI dalam negeri, talenta digital, tata kelola data, kemandirian teknologi."]],c=>`<div class="card"><div class="ic">${c[0]}</div><h3>${c[1]}</h3><p class="mu">${c[2]}</p></div>`)}
+<h3 style="margin-top:36px">Dasbor Dampak</h3>${note("DATA CONTOH — bukan capaian nyata dan bukan klaim kemitraan.")}<div class="grid">${IM.map(m=>`<div class="card"><div class="num" data-n="${m[1]}">0</div><span class="mu">${m[0]}</span></div>`).join('')}</div></div></section>`,
+masuk:()=>S.user?(location.hash="#dashboard",''):`<section><div class="w" style="max-width:460px"><h2>Masuk / Daftar</h2>${note("Simulasi front-end: tidak ada data yang dikirim atau disimpan di server.")}<form class="card" id="fa" novalidate><label>Peran<select name="r"><option value="Mahasiswa">Mahasiswa</option><option value="Industri">Industri</option><option value="Admin">Administrator</option></select></label><label>Nama<input name="n"></label><div class="err"></div><label>Email<input name="e" type="email"></label><div class="err"></div><label>Kata sandi (min. 8 karakter)<input name="p" type="password"></label><div class="err"></div><p><button class="btn">Lanjutkan</button></p></form></div></section>`,
+dashboard:()=>{if(!S.user){location.hash="#masuk";return''}
+const r=S.user.r,T={Mahasiswa:["Profil","Tantangan","Proyek Saya","Portofolio"],Industri:["Profil Perusahaan","Ajukan Tantangan","Tantangan Saya","Tinjau Hasil"],Admin:["Ringkasan","Akun & Mitra","Tantangan","Verifikasi"]}[r];
+return `<section><div class="w"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><h2 style="margin:0">Dasbor ${r}</h2><span class="tag">Simulasi</span><span style="margin-left:auto"><button class="btn sm o" id="nt">Notifikasi (${S.notes.length})</button> <button class="btn sm o" id="lo">Keluar</button></span></div><br><div class="dash"><div class="side">${T.map((t,i)=>`<button class="${i==S.tab?'on':''}" data-t="${i}">${t}</button>`).join('')}</div><div id="dv">${DV(r,S.tab)}</div></div></div></section>`}
+};
+function DV(r,t){
+if(r=="Mahasiswa"){
+if(t==0)return`<form class="card" id="fp" novalidate><h3>Profil & Kompetensi</h3><label>Nama<input name="n" value="${S.user.n}"></label><label>Kampus<input name="u" value="${S.prof.u}"></label><label>Keahlian<input name="s" value="${S.prof.s}"></label><p><button class="btn sm">Simpan (simulasi)</button></p></form>`;
+if(t==1)return cards(CH,c=>`<div class="card"><span class="tag c">${c.c}</span><h3>${c.t}</h3><p class="mu">${c.d}</p><button class="btn sm" data-j="${c.id}" ${S.joined.find(j=>j.id==c.id)?'disabled':''}>${S.joined.find(j=>j.id==c.id)?'Sudah bergabung':'Gabung Proyek'}</button></div>`);
+if(t==2)return S.joined.length?S.joined.map(j=>`<div class="card" style="margin-bottom:12px"><h3>${CH[j.id].t}</h3><div class="bar"><b style="width:${j.p}%"></b></div><p class="mu">Progres ${j.p}% · Umpan balik mentor: ${j.p>=40?"Struktur model sudah baik, tambahkan evaluasi bias (contoh).":"Belum ada."}</p><button class="btn sm o" data-pg="${j.id}">+20% progres</button></div>`).join(''):`<div class="card">Belum ada proyek. Gabung dari tab Tantangan.</div>`;
+return`<div class="card"><h3>Portofolio</h3>${S.port.map(p=>`<p><b>${p.t}</b><br><span class="mu">${p.p} · ${p.k} · ${p.c}</span></p>`).join('')}</div><form class="card" id="fo" novalidate style="margin-top:14px"><h3>Tambah Proyek</h3><label>Judul<input name="t"></label><div class="err"></div><label>Masalah yang diselesaikan<input name="p"></label><label>Teknologi<input name="k"></label><label>Kontribusi tim<input name="c"></label><p><button class="btn sm">Tambahkan</button></p></form>`}
+if(r=="Industri"){
+if(t==0)return`<div class="card"><h3>Profil Perusahaan</h3><p class="mu">${S.user.n} · ${S.user.e}</p></div>`;
+if(t==1)return`<form class="card" id="fc" novalidate><label>Judul<input name="t"></label><div class="err"></div><label>Deskripsi<textarea name="d" rows="3"></textarea></label><div class="err"></div><input name="n" type="hidden" value="${S.user.n}"><p><button class="btn sm">Kirim</button></p></form>`;
+if(t==2)return cards(CH.filter(c=>c.mine||c.id<2),c=>`<div class="card"><h3>${c.t}</h3><span class="tag">${c.st}</span><p class="mu">${c.mine?'Pelamar: 0 (simulasi)':'Pelamar: 3 (contoh)'}</p></div>`);
+return`<div class="card">Belum ada hasil akhir untuk ditinjau (simulasi).<br><br><button class="btn sm" data-fb>Kirim Umpan Balik Contoh</button></div>`}
+if(t==0)return cards([["Mahasiswa",1240],["Mitra",32],["Tantangan",CH.length],["Pengajuan Menunggu",4]],m=>`<div class="card"><div class="num">${m[1]}</div><span class="mu">${m[0]} (contoh)</span></div>`);
+if(t==1)return`<div class="card sc"><table><tr><th>Nama</th><th>Tipe</th><th>Status</th></tr><tr><td>Akun Contoh 1</td><td>Mahasiswa</td><td>Aktif</td></tr><tr><td>Mitra Contoh A</td><td>Industri</td><td>Menunggu verifikasi</td></tr></table></div>`;
+if(t==2)return CH.map(c=>`<div class="card" style="margin-bottom:10px">${c.t} <span class="tag">${c.st}</span></div>`).join('');
+return`<div class="card">3 pengajuan proyek menunggu (contoh).<br><br><button class="btn sm" data-vf>Verifikasi (simulasi)</button></div>`}
+
+function chl(){const q=$('#q').value.toLowerCase(),f=$('#cf').value;$('#cl').innerHTML=cards(CH.filter(c=>(!f||c.c==f)&&(c.t+c.d+c.s.join()).toLowerCase().includes(q)),c=>`<div class="card"><span class="tag c">${c.c}</span><span class="tag">${c.st}</span><h3>${c.t}</h3><p class="mu">${c.d}</p><p style="font-size:.85rem"><b>Keterampilan:</b> ${c.s.join(', ')}<br><b>Output:</b> ${c.o}</p><button class="btn sm" data-c="${c.id}">Lihat Tantangan</button></div>`)||'';if(!$('#cl').textContent.trim())$('#cl').innerHTML='<p class="mu">Tidak ada tantangan yang cocok.</p>'}
+function pjl(f){$('#pl').innerHTML=cards(PJ.filter(p=>!f||p.c==f),p=>`<div class="card"><span class="tag c">${p.c}</span><span class="tag">${p.st}</span><h3>${p.t}</h3><p class="mu">${p.d}</p></div>`)}
+function modal(h){const m=document.createElement('div');m.className='modal';m.innerHTML=`<div class="card">${h}<p><button class="btn sm o" id="mx">Tutup</button></p></div>`;document.body.append(m);m.onclick=e=>{if(e.target==m||e.target.id=='mx')m.remove()}}
+function val(f,rules){let ok=true;$$('.err',f).forEach(e=>e.textContent='');for(const[k,fn,msg]of rules){const el=f.elements[k];if(!fn(el.value.trim())){ok=false;const er=el.closest('label')?.nextElementSibling;if(er&&er.className=='err')er.textContent=msg}}return ok}
+const req=v=>v.length>1;
+function bind(){net();
+$$('[data-pr]').forEach(b=>b.onclick=()=>{const p=PR[b.dataset.pr];modal(`<h3>${p.t}</h3><p class="mu">${p.d}</p><b>Aktivitas</b><ul>${p.a.map(a=>`<li>${a}</li>`).join('')}</ul><b>Hasil yang diharapkan</b><p class="mu">${p.o}</p>`)});
+if($('#cl')){chl();$('#q').oninput=chl;$('#cf').onchange=chl}
+$('#cl')&&($('#cl').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;const c=CH[b.dataset.c];modal(`<h3>${c.t}</h3><p>${c.d}</p><p class="mu">Kategori: ${c.c}<br>Keterampilan: ${c.s.join(', ')}<br>Output: ${c.o}<br>Status: ${c.st}</p><p class="mu">Contoh tantangan prototipe.</p><a class="btn sm" href="#masuk">Masuk untuk bergabung</a>`)});
+if($('#pl')){pjl('');$('#fl2').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;$$('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');pjl(b.dataset.f)}}
+const fc=$('#fc');if(fc)fc.onsubmit=e=>{e.preventDefault();if(!val(fc,[['n',req,'Wajib diisi'],['t',req,'Wajib diisi'],['d',v=>v.length>=20,'Minimal 20 karakter']]))return;CH.push({id:CH.length,c:"Diajukan Industri",t:fc.t.value,d:fc.d.value,s:["Menunggu tinjauan"],o:"Ditentukan bersama",st:"Dalam Peninjauan",mine:1});S.notes.push("Tantangan terkirim (simulasi)");toast("Tantangan tercatat secara lokal (simulasi, tidak ke server)");fc.reset();$('#cl')&&chl()};
+const fa=$('#fa');if(fa)fa.onsubmit=e=>{e.preventDefault();if(!val(fa,[['n',req,'Nama wajib diisi'],['e',v=>/^\S+@\S+\.\S+$/.test(v),'Email tidak valid'],['p',v=>v.length>=8,'Minimal 8 karakter']]))return;S.user={n:fa.n.value,e:fa.e.value,r:fa.r.value};S.tab=0;toast("Masuk (simulasi)");location.hash="#dashboard"};
+$$('.num[data-n]').forEach(n=>{const t=+n.dataset.n;let i=0;const id=setInterval(()=>{i+=Math.ceil(t/40);if(i>=t){i=t;clearInterval(id)}n.textContent=i.toLocaleString('id-ID')},30)});
+const fl=$('#fl');if(fl)setTimeout(()=>fl.parentElement.classList.add('in'),200);
+if(location.hash=="#dashboard"&&S.user)dbind();
+}
+function dbind(){
+$$('.side button').forEach(b=>b.onclick=()=>{S.tab=+b.dataset.t;go()});
+$('#lo').onclick=()=>{S.user=null;location.hash="#beranda";toast("Keluar")};
+$('#nt').onclick=()=>modal(`<h3>Notifikasi</h3>${S.notes.map(n=>`<p class="mu">• ${n}</p>`).join('')}`);
+const dv=$('#dv');
+const fp=$('#fp');if(fp)fp.onsubmit=e=>{e.preventDefault();S.user.n=fp.n.value;S.prof.u=fp.u.value;S.prof.s=fp.s.value;toast("Profil diperbarui (simulasi)")};
+const fo=$('#fo');if(fo)fo.onsubmit=e=>{e.preventDefault();if(!val(fo,[['t',req,'Judul wajib diisi']]))return;S.port.push({t:fo.t.value,p:fo.p.value,k:fo.k.value,c:fo.c.value,l:"#"});toast("Portofolio ditambah (simulasi)");go()};
+dv.onclick=e=>{const b=e.target.closest('button');if(!b)return;
+if(b.dataset.j!=null){S.joined.push({id:+b.dataset.j,p:0});S.notes.push("Bergabung ke proyek (simulasi)");toast("Bergabung ke proyek");go()}
+if(b.dataset.pg!=null){const j=S.joined.find(x=>x.id==b.dataset.pg);j.p=Math.min(100,j.p+20);go()}
+if(b.hasAttribute('data-fb')||b.hasAttribute('data-vf'))toast("Aksi tercatat (simulasi)")}}
+function go(){const h=(location.hash||'#beranda').slice(1);const k=R[h]?h:'beranda';$$('.links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+k));const o=R[k]();if(o===''&&k!='dashboard'&&k!='masuk'&&!S.user&&k!='masuk')return;$('#app').innerHTML=o;$('#lk').classList.remove('open');bind();rv();if(k=='dashboard'&&S.user)dbind()}
+function net(){const c=$('#cv');if(!c)return;const x=c.getContext('2d'),L=['Kampus','Industri','Mentor','Mahasiswa','Data','Model AI'];let W,H,m={x:-999,y:-999},P=[],hov=null;
+const size=()=>{const r=c.parentElement.getBoundingClientRect(),d=devicePixelRatio||1;W=r.width;H=Math.min(420,W*.9);c.width=W*d;c.height=H*d;c.style.height=H+'px';x.setTransform(d,0,0,d,0,0)};size();
+const add=(px,py,l)=>P.push({x:px,y:py,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,l,r:l?6:3});
+for(let i=0;i<46;i++)add(Math.random()*W,Math.random()*H,i<L.length?L[i]:null);
+const pos=e=>{const r=c.getBoundingClientRect(),t=e.touches?e.touches[0]:e;m.x=t.clientX-r.left;m.y=t.clientY-r.top};
+c.onmousemove=pos;c.onmouseleave=()=>m.x=-999;c.ontouchmove=pos;
+c.onclick=e=>{pos(e);add(m.x,m.y,null);if(P.length>90)P.splice(L.length,1)};
+function f(){if(!document.body.contains(c))return;x.clearRect(0,0,W,H);hov=null;
+for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;const dx=m.x-p.x,dy=m.y-p.y,d=Math.hypot(dx,dy);if(d<130){p.x+=dx*.012;p.y+=dy*.012}if(p.l&&d<20)hov=p}
+for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<95){x.strokeStyle='rgba(181,71,43,'+(1-d/95)*.5+')';x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+for(const p of P){x.beginPath();x.arc(p.x,p.y,p===hov?9:p.r,0,7);x.fillStyle=p.l?'#B5472B':'#2F5D50';x.fill();if(p.l){x.fillStyle='#1E1B16';x.font='12px Inter,sans-serif';x.fillText(p.l,p.x+11,p.y+4)}}
+requestAnimationFrame(f)}f();addEventListener('resize',size)}
+function rv(){if(!window.IntersectionObserver)return;const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}}),{threshold:.1});$$('.card,.step,section h2').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=(i%4)*70+'ms';o.observe(e)})}
+document.addEventListener('mousemove',e=>{const c=e.target.closest&&e.target.closest('.card');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}});
+addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;$('#pb').style.width=(h>0?scrollY/h*100:0)+'%'});
+addEventListener('hashchange',()=>{scrollTo(0,0);go()});
+addEventListener('scroll',()=>$('#nv').classList.toggle('s',scrollY>10));
+$('#bg').onclick=()=>$('#lk').classList.toggle('open');
+go();
+</script></body></html>
