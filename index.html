@@ -89,6 +89,35 @@ nav.s{background:rgba(243,238,227,.92)}
 .card{position:relative}.card:hover{background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(181,71,43,.1),transparent)}
 .mq{overflow:hidden;border-block:1px solid var(--bd);padding:14px 0;white-space:nowrap}.mq div{display:inline-block;animation:mq 34s linear infinite;font:600 1.4rem Fraunces,Georgia,serif}.mq span{margin:0 22px;color:var(--cy)}@keyframes mq{to{transform:translateX(-50%)}}
 #pb{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--cy)}
+:root{--bg:#FFF8E7;--bg2:#FFF0C2;--sf:#fff;--bl:#E63B2E;--cy:#E63B2E;--vi:#111;--tx:#111;--mu:#4A4A4A;--bd:#111}
+h1,h2,h3,.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em}
+nav{background:var(--bg);border-bottom:2px solid #111}nav.s{background:rgba(255,248,231,.95)}
+.logo{background:#111;color:#FFD84D;padding:4px 10px;transform:rotate(-2deg);display:inline-block}
+.links a{color:#111;font-weight:600;padding:3px 8px;border-radius:6px}.links a:hover,.links a.on{background:#FFD84D;color:#111}
+#pb{height:4px;background:#E63B2E}
+section{border-top:0;padding:72px 0}main section:nth-of-type(even){background:var(--bg2);border-block:2px solid #111}
+.g{font-style:normal;background:#FFD84D;color:#111;padding:0 .15em;display:inline-block;transform:rotate(-1.5deg)}
+.btn{background:#E63B2E;color:#fff;border:2px solid #111;border-radius:8px;box-shadow:3px 3px 0 #111;font-weight:700}
+.btn:hover{background:#E63B2E;color:#fff;transform:translate(-2px,-2px);box-shadow:5px 5px 0 #111}.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #111}
+.btn.o{background:#fff;color:#111}.btn.o:hover{background:#FFD84D;color:#111;border-color:#111}
+.card{background:#fff;border:2px solid #111;border-radius:10px;box-shadow:5px 5px 0 #111;padding:22px}
+.card:hover{background:#fff;transform:translate(-2px,-2px);box-shadow:7px 7px 0 #111;border-color:#111}
+.grid>.card:nth-child(3n+1){background:#FFD84D}.grid>.card:nth-child(3n+2){background:#fff}.grid>.card:nth-child(3n){background:#9BE3C0}
+.grid>.card .mu{color:#222}
+.grid>.card:before{display:inline-block;background:#fff;color:#111;border:2px solid #111;border-radius:6px;padding:1px 8px;font:800 .8rem 'Plus Jakarta Sans',sans-serif;transform:rotate(-4deg)}
+.dash .grid>.card:before{content:none}
+.tag,.tag.c{display:inline-block;transform:rotate(-2deg);background:#fff;color:#111;border:2px solid #111;border-radius:6px;padding:2px 9px;font:700 .72rem Inter,sans-serif;text-transform:none;letter-spacing:0}.tag.c{background:#9BE3C0}
+.step{background:#fff;border:2px solid #111;border-radius:10px;box-shadow:4px 4px 0 #111;padding:20px 18px}.step i{top:-2px;left:-2px;height:7px;border-radius:10px 10px 0 0;background:#E63B2E}.step:before{font:800 1.6rem 'Plus Jakarta Sans',sans-serif;color:#111}
+.mq{background:#111;border:0;transform:rotate(-1deg);margin:20px -10px}.mq div{font:800 1.3rem 'Plus Jakarta Sans',sans-serif;color:#FFD84D;text-transform:uppercase}.mq span{color:#E63B2E}
+.note{border:2px solid #111;background:#FFD84D;color:#111;border-radius:8px;transform:rotate(-.6deg)}
+input,select,textarea{border:2px solid #111;background:#fff;border-radius:6px;color:#111}
+.chip{border:2px solid #111;color:#111;background:#fff;font-weight:600}.chip.on{background:#111;color:#FFD84D;border-color:#111}
+.bar{border:2px solid #111;height:14px;border-radius:99px;background:#fff}.bar b{background:#E63B2E}
+.side button{border:2px solid transparent}.side button.on,.side button:hover{background:#FFD84D;color:#111;border-color:#111}
+.cvw canvas{background:#fff;border:2px solid #111;box-shadow:6px 6px 0 #111;border-radius:10px}
+.modal{background:rgba(17,17,17,.6)}#toast{background:#111;color:#FFD84D;border-color:#111}
+footer{background:#111;color:#ddd;border:0}
+.hero{grid-template-columns:1fr;max-width:860px;padding:48px 0 24px}.hero h1{font-size:clamp(2.2rem,6vw,4rem)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <nav id="nv"><i id="pb"></i><div class="w"><a href="#beranda" class="logo">NUSA <span class="g">LINDUNG</span></a><button id="bg" aria-label="Menu">☰</button>
@@ -136,7 +165,7 @@ const MB=()=>cards(MIS,p=>`<div class="card"><div class="ic">${p[0]}</div><h3>${
 const HW=()=>`<div class="steps" id="fl">${FLOW.map(f=>`<div class="step"><i></i><p>${f}</p></div>`).join('')}</div>`;
 
 const R={
-beranda:()=>`<div class="w"><div class="hero"><div><span class="tag c">Talenta Muda Berdaya, Teknologi Indonesia Berdaulat.</span><h1>Teknologi Boleh Berkembang Pesat. <span class="g">Kedaulatan Digital</span> Harus Tetap di Tangan Indonesia.</h1><p class="mu">NUSA LINDUNG hadir sebagai ruang kolaborasi generasi muda, perguruan tinggi, dan industri untuk membangun teknologi AI yang aman, mandiri, dan bermanfaat bagi bangsa.</p><p><a class="btn" href="#inovasi">Jelajahi Inovasi</a> <a class="btn o" href="#tentang">Kenali Misi Kami</a></p><p class="mu" style="font-size:.85rem">From Campus Innovation to National Digital Independence.</p></div><div class="cvw"><canvas id="cv" aria-label="Jaringan interaktif kampus, industri, dan mentor"></canvas><small class="mu">GERAKKAN KURSOR / KLIK UNTUK MENAMBAH SIMPUL</small></div></div></div>
+beranda:()=>`<div class="w"><div class="hero"><div><span class="tag c">Talenta Muda Berdaya, Teknologi Indonesia Berdaulat.</span><h1>Teknologi Boleh Berkembang Pesat. <span class="g">Kedaulatan Digital</span> Harus Tetap di Tangan Indonesia.</h1><p class="mu">NUSA LINDUNG hadir sebagai ruang kolaborasi generasi muda, perguruan tinggi, dan industri untuk membangun teknologi AI yang aman, mandiri, dan bermanfaat bagi bangsa.</p><p><a class="btn" href="#inovasi">Jelajahi Inovasi</a> <a class="btn o" href="#tentang">Kenali Misi Kami</a></p><p class="mu" style="font-size:.85rem">From Campus Innovation to National Digital Independence.</p></div></div></div>
 <div class="mq"><div>${["Data Guardian","AI Independence Lab","AI Audit Academy","Industry AI Project","Data Guardian","AI Independence Lab","AI Audit Academy","Industry AI Project"].map(t=>`${t}<span>/</span>`).join('')}</div></div><section><div class="w">${head("Dari Ruang Kelas Menuju Solusi Nyata.")}${HW()}</div></section>
 <section><div class="w"><h2 style="text-align:center">Indonesia tidak cukup hanya menjadi pengguna teknologi.</h2><p class="mu" style="text-align:center;max-width:760px;margin:auto">Generasi mudanya harus mampu mengembangkan, mengelola, mengaudit, dan menentukan arah teknologi yang digunakan bangsanya.</p></div></section>`,
 tentang:()=>`<section><div class="w">${head("Mengapa Indonesia Membutuhkan NUSA LINDUNG?","Tiga tantangan utama. Statistik resmi akan ditambahkan hanya bersama sumber dan tahun terbitnya.")}${PB()}</div></section><section><div class="w">${head("Bukan Sekadar Belajar Teknologi. Saatnya Menciptakan Solusi.")}${MB()}</div></section><section><div class="w">${HW()}</div></section>`,
@@ -209,8 +238,8 @@ c.onmousemove=pos;c.onmouseleave=()=>m.x=-999;c.ontouchmove=pos;
 c.onclick=e=>{pos(e);add(m.x,m.y,null);if(P.length>90)P.splice(L.length,1)};
 function f(){if(!document.body.contains(c))return;x.clearRect(0,0,W,H);hov=null;
 for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;const dx=m.x-p.x,dy=m.y-p.y,d=Math.hypot(dx,dy);if(d<130){p.x+=dx*.012;p.y+=dy*.012}if(p.l&&d<20)hov=p}
-for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<95){x.strokeStyle='rgba(181,71,43,'+(1-d/95)*.5+')';x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
-for(const p of P){x.beginPath();x.arc(p.x,p.y,p===hov?9:p.r,0,7);x.fillStyle=p.l?'#B5472B':'#2F5D50';x.fill();if(p.l){x.fillStyle='#1E1B16';x.font='12px Inter,sans-serif';x.fillText(p.l,p.x+11,p.y+4)}}
+for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<95){x.strokeStyle='rgba(17,17,17,'+(1-d/95)*.6+')';x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+for(const p of P){x.beginPath();x.arc(p.x,p.y,p===hov?9:p.r,0,7);x.fillStyle=p.l?'#E63B2E':'#111';x.fill();if(p.l){x.fillStyle='#1E1B16';x.font='12px Inter,sans-serif';x.fillText(p.l,p.x+11,p.y+4)}}
 requestAnimationFrame(f)}f();addEventListener('resize',size)}
 function rv(){if(!window.IntersectionObserver)return;const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}}),{threshold:.1});$$('.card,.step,section h2').forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=(i%4)*70+'ms';o.observe(e)})}
 document.addEventListener('mousemove',e=>{const c=e.target.closest&&e.target.closest('.card');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}});
